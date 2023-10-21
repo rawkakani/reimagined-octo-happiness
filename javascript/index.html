@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>JS</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="flex flex-col space-y-2">
+
+<h1 class="font-bold text-xl">
+Welcome Lucky!, you have some queries to review
+</h1>
+
+<div id="queries" class="space-y-2">
+    <div class="flex space-x-8 font-bold">
+        <div class="w-1/5">ID</div>
+        <div class="w-2/5">Student</div>
+        <div class="w-4/5 flex flex-grow">Query</div>
+        <div class="w-1/5 ">Status</div>
+        <div class="w-1/5">Action</div>
+    </div>
+</div>
+	
+<script lang="JS">
+const queries = [
+    {id: 1, student: "Genesis", query: "Permission to absent from tech class", status: "APPROVED"},
+    {id: 2, student: "Nunya", query: "Permission to Absa Hackathon", status: "APPROVED"},
+    {id: 3, student: "Fleeur", query: "Permission to shoot film", status: "DECLINED"},
+    {id: 4, student: "Delight", query: "Need some delightful time to cool off", status: "DECLINED"},
+    {id: 5, student: "Sila", query: "Permission to participate in Absa Hackathon", status: "PENDING"},
+    ]
+
+const query_row = (id, student, query, status) => `
+ <div class="flex space-x-8">
+        <div class="w-1/5">${id}</div>
+        <div class="w-2/5">${student}</div>
+        <div class="w-4/5 flex flex-grow" >${query}</div>
+        <div  class="w-1/5 text-sm" >${status}</div>
+        <div  class="w-1/5 space-x-2 text-blue-600 underline">
+          <a href="#" >Accept</a>
+          <a href="#">Decline</a>
+        </div>
+</div>
+`;
+
+while(queries.length > 0){
+    
+    let i = 0;
+    do {
+        const {id, student, query, status} = queries[i]
+        document.getElementById('queries').innerHTML += query_row(id, student,query, status)
+        i += 1;
+    } while (i < queries.length);
+    
+    break;
+}
+</script>
+
+</body>
+</html>
